@@ -1,11 +1,13 @@
 package com.vortexframework.template
 
+import com.vortexframework.template.builder.html.HtmlTagBuilder
 import com.vortexframework.template.builder.html.HtmlTemplateBuilder
 
-fun htmlTemplate(init: HtmlTemplateBuilder.() -> Unit): HtmlTemplateBuilder {
-    val template = HtmlTemplateBuilder()
-    template.init()
-    return template
+fun htmlTemplate(init: HtmlTagBuilder.() -> Unit): HtmlTemplateBuilder {
+    val base = HtmlTemplateBuilder()
+    base.html(init)
+
+    return base
 }
 
 // To be moved to common library in future

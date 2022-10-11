@@ -4,8 +4,7 @@ import com.vortexframework.template.builder.html.element.HtmlTagTemplateElement
 import com.vortexframework.template.builder.text.TextTemplateBuilder
 
 open class HtmlTemplateBuilder: TextTemplateBuilder() {
-    fun header(init: HtmlHeaderBuilder.() -> Unit) = addTagWithBody(HtmlHeaderBuilder(), init, "header")
-    fun body(init: HtmlBodyBuilder.() -> Unit) = addTagWithBody(HtmlBodyBuilder(), init, "body")
+    fun html(init: HtmlTagBuilder.() -> Unit) = addTagWithBody(HtmlTagBuilder(), init, "html")
 
     protected fun <T: HtmlTemplateBuilder> addTagWithBody(instance: T, init: T.() -> Unit, tagName: String,
                                                           attributes: HashMap<String, String> = HashMap()) {

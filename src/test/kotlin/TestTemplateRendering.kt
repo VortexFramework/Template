@@ -6,15 +6,17 @@ class TestTemplateRendering {
     private fun String.min() = this.split("\n").joinToString("") { it.trimStart() }
     @Test
     fun `Test can render template with no content`() {
-        assertEquals("", htmlTemplate{}.toString())
+        assertEquals("<html></html>", htmlTemplate{}.toString())
     }
 
     @Test
     fun `Test can render template with title`() {
         assertEquals("""
-            <header>
-                <title>Test</title>
-            </header>
+            <html>
+                <header>
+                    <title>Test</title>
+                </header>
+            </html>
         """.min(), htmlTemplate {
             header {
                 title("Test")
@@ -25,12 +27,14 @@ class TestTemplateRendering {
     @Test
     fun `Test can render template with JS and CSS`() {
         assertEquals("""
-            <header>
-                <link rel="stylesheet" href="test.css"/>
-                <link rel="stylesheet" href="foo.css"/>
-                <script src="test.js"></script>
-                <script src="foo.js"></script>
-            </header>
+            <html>
+                <header>
+                    <link rel="stylesheet" href="test.css"/>
+                    <link rel="stylesheet" href="foo.css"/>
+                    <script src="test.js"></script>
+                    <script src="foo.js"></script>
+                </header>
+            </html>
         """.min(), htmlTemplate {
             header {
                 withStyles("test.css", "foo.css")
@@ -42,15 +46,17 @@ class TestTemplateRendering {
     @Test
     fun `Can render basic html page`() {
         assertEquals("""
-            <header>
-                <title>This is a test</title>
-            </header>
-            <body>
-                <h1>Welcome to my website</h1>
-                <p>
-                    Built using <a href="https://github.com/VortexFramework/Template">Vortex Template</a>
-                </p>
-            </body>
+            <html>
+                <header>
+                    <title>This is a test</title>
+                </header>
+                <body>
+                    <h1>Welcome to my website</h1>
+                    <p>
+                        Built using <a href="https://github.com/VortexFramework/Template">Vortex Template</a>
+                    </p>
+                </body>
+            </html>
         """.min(), htmlTemplate {
             header {
                 title("This is a test")
