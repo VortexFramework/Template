@@ -5,6 +5,7 @@ import com.vortexframework.template.builder.html.HtmlTemplateBuilder
 
 fun htmlTemplate(init: HtmlTagBuilder.() -> Unit): HtmlTemplateBuilder {
     val base = HtmlTemplateBuilder()
+    base.doctype("html")
     base.html(init)
 
     return base

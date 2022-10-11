@@ -6,12 +6,13 @@ class TestTemplateRendering {
     private fun String.min() = this.split("\n").joinToString("") { it.trimStart() }
     @Test
     fun `Test can render template with no content`() {
-        assertEquals("<html></html>", htmlTemplate{}.toString())
+        assertEquals("<!DOCTYPE html><html></html>", htmlTemplate{}.toString())
     }
 
     @Test
     fun `Test can render template with title`() {
         assertEquals("""
+            <!DOCTYPE html>
             <html>
                 <header>
                     <title>Test</title>
@@ -27,6 +28,7 @@ class TestTemplateRendering {
     @Test
     fun `Test can render template with JS and CSS`() {
         assertEquals("""
+            <!DOCTYPE html>
             <html>
                 <header>
                     <link rel="stylesheet" href="test.css"/>
@@ -46,6 +48,7 @@ class TestTemplateRendering {
     @Test
     fun `Can render basic html page`() {
         assertEquals("""
+            <!DOCTYPE html>
             <html>
                 <header>
                     <title>This is a test</title>
